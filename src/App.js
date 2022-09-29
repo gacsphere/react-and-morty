@@ -1,9 +1,11 @@
 import "./App.css";
 
+import { Header } from "./components/header/Header";
+
 function App() {
   return (
     <div className="App">
-      <header>React and Morty</header>
+      <Header />
       <main>
         <article>
           <img
