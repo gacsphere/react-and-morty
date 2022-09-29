@@ -5,13 +5,16 @@ function Header() {
 }
 
 const HeaderStyled = styled.h1`
-  position: fixed;
+  text-align: center;
   z-index: 20;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: violet;
-  border-bottom: 1px solid black;
+  background-color: deepskyblue;
+  //   border-bottom: 1px solid black;
+  padding: 8px;
+  color: white;
 `;
 
 export default Header;
