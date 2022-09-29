@@ -10,7 +10,7 @@ const HeaderStyled = styled.h1`
   top: 0;
   left: 0;
   width: 100%;
-  background: black;
+  background-color: violet;
   border-bottom: 1px solid black;
 `;
 
