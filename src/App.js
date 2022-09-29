@@ -1,23 +1,13 @@
 import "./App.css";
 
 import Header from "./components/header/Header";
+import Card from ".components/card/Card";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main>
-        <article>
-          <img
-            src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-            alt="Portrait of Morty Smith"
-          ></img>
-          <section>
-            <p>Morty Smith</p>
-            <button>Show more</button>
-          </section>
-        </article>
-      </main>
+      <main></main>
       <nav>
         <button>1</button>
         <button>2</button>
