@@ -32,7 +32,7 @@ const Main = styled.main`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #0f1e24;
+  background-color: #f0f0f0;
 `;
 
 export default App;
