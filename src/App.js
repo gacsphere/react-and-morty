@@ -3,6 +3,7 @@
 import Header from "./components/header/Header";
 import Card from "./components/card/Card";
 import styled from "styled-components";
+import Navigation from "./components/navigation/Navigation";
 
 function App() {
   return (
@@ -19,12 +20,7 @@ function App() {
         <Card />
         <Card />
       </Main>
-      <nav>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-      </nav>
+      <Navigation></Navigation>
     </>
   );
 }
