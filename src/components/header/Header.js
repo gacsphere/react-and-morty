@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
-function Header() {
-  return <HeaderStyled>React and Morty</HeaderStyled>;
+function Header({ children }) {
+  return <HeaderStyled>{children}</HeaderStyled>;
 }
 
-const HeaderStyled = styled.h1`
+const HeaderStyled = styled.header`
   text-align: center;
   font-size: 2em;
+  font-weight: 600;
   z-index: 20;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: deepskyblue;
-  // border-bottom: 1px solid black;
   padding: 8px;
   color: white;
 `;

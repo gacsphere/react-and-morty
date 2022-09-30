@@ -21,6 +21,7 @@ const CharacterCard = styled.article`
   font-size: 1em;
   box-shadow: #4cd2ff 4px 4px;
   background-color: white;
+  /* background-color: #f7f7f7; */
   // border: 4px solid black;
   &:hover {
     transform: scale(1.0125, 1.0125);

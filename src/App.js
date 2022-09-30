@@ -8,7 +8,7 @@ import Navigation from "./components/navigation/Navigation";
 function App() {
   return (
     <>
-      <Header />
+      <Header>React and Morty</Header>
       <Main>
         <Card />
         <Card />
@@ -31,6 +31,8 @@ const Main = styled.main`
   padding: 6em 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  background-color: #0f1e24;
 `;
 
 export default App;
