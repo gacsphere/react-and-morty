@@ -5,6 +5,7 @@ import Card from "./components/card/Card";
 import styled from "styled-components";
 import Navigation from "./components/navigation/Navigation";
 import { useState, useEffect } from "react";
+import GlobalStyle from "./globalStyles";
 
 const URL = "https://rickandmortyapi.com/api/character";
 
@@ -16,6 +17,7 @@ function App() {
       const response = await fetch(URL);
       const result = await response.json();
       console.log(result.results);
+      // setCharacters(result.results);
     } catch (error) {
       console.log(error);
     }
@@ -28,6 +30,7 @@ function App() {
 
   return (
     <>
+      <GlobalStyle />
       <Header>React and Morty</Header>
       <Main>
         <Card />
