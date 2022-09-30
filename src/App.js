@@ -4,8 +4,28 @@ import Header from "./components/header/Header";
 import Card from "./components/card/Card";
 import styled from "styled-components";
 import Navigation from "./components/navigation/Navigation";
+import { useState, useEffect } from "react";
+
+const URL = "https://rickandmortyapi.com/api/character";
 
 function App() {
+  const [characters, setCharacters] = useState([]);
+
+  async function fetchCharacters() {
+    try {
+      const response = await fetch(URL);
+      const result = await response.json();
+      console.log(result.results);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    console.log("inside useEffect");
+    fetchCharacters();
+  }, []);
+
   return (
     <>
       <Header>React and Morty</Header>
