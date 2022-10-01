@@ -1,14 +1,11 @@
 import styled from "styled-components";
 
-function Card() {
+function Card({ img, name, gender, species, status, location, origin }) {
   return (
     <CharacterCard>
-      <img
-        src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-        alt="Portrait of Morty Smith"
-      ></img>
+      <img src={img} alt="Portrait of {name}" />
       <section>
-        <CardName>Morty Smith</CardName>
+        <CardName>{name}</CardName>
         <CardButton>SHOW MORE</CardButton>
       </section>
     </CharacterCard>
@@ -16,6 +13,7 @@ function Card() {
 }
 
 const CharacterCard = styled.article`
+  width: 300px;
   margin: 1em;
   text-align: center;
   font-size: 1em;

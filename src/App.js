@@ -17,7 +17,7 @@ function App() {
       const response = await fetch(URL);
       const result = await response.json();
       console.log(result.results);
-      // setCharacters(result.results);
+      setCharacters(result.results);
     } catch (error) {
       console.log(error);
     }
@@ -33,15 +33,18 @@ function App() {
       <GlobalStyle />
       <Header>React and Morty</Header>
       <Main>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {characters.map((character) => (
+          <Card
+            key={character.id}
+            img={character.image}
+            name={character.name}
+            gender={character.gender}
+            species={character.species}
+            status={character.status}
+            location={character.location}
+            origin={character.origin}
+          />
+        ))}
       </Main>
       <Navigation></Navigation>
     </>
