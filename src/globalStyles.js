@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+:root {
+--primary: deepskyblue;
+--secondary: #00a7df;
+--tertiary: #4cd2ff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
