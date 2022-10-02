@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Navigation from "./components/navigation/Navigation";
 import { useState, useEffect } from "react";
 import GlobalStyle from "./globalStyles";
+import { Routes, Route, useParams } from "react-router-dom";
 
 const URL = "https://rickandmortyapi.com/api/character";
 
@@ -38,11 +39,12 @@ function App() {
             key={character.id}
             img={character.image}
             name={character.name}
-            gender={character.gender}
-            species={character.species}
-            status={character.status}
-            location={character.location}
-            origin={character.origin}
+            // gender={character.gender}
+            // species={character.species}
+            // status={character.status}
+            // location={character.location}
+            // origin={character.origin}
+            // character={character}
           />
         ))}
       </Main>

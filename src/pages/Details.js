@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import GlobalStyle from "../../globalStyles";
+import GlobalStyle from "../globalStyles";
 
-function Card({ img, name /* gender, species, status, location, origin */ }) {
+function Details() {
   return (
     <CharacterCard>
       <BookmarkButton>
@@ -75,4 +75,4 @@ const BookmarkButton = styled.button`
   }
 `;
 
-export default Card;
+export default Details;
