@@ -6,14 +6,14 @@ import styled from "styled-components";
 import Navigation from "./components/navigation/Navigation";
 import { useState, useEffect } from "react";
 import GlobalStyle from "./globalStyles";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import Details from "./pages/Details";
 
 const URL = "https://rickandmortyapi.com/api/character";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  // let { detailedCharacterId } = useParams();
+  let { detailedCharacterId } = useParams();
 
   async function fetchCharacters() {
     try {
@@ -42,21 +42,25 @@ function App() {
             path="/details/:detailedCharacterId"
             element={<Details characters={characters} />}
           />
-        </Routes>
-        {characters.map((character) => (
-          <Card
-            key={character.id}
-            id={character.id}
-            img={character.image}
-            name={character.name}
-            // gender={character.gender}
-            // species={character.species}
-            // status={character.status}
-            // location={character.location}
-            // origin={character.origin}
-            // character={character}
+          <Route
+            path="/"
+            end
+            element={characters.map((character) => (
+              <Card
+                key={character.id}
+                id={character.id}
+                img={character.image}
+                name={character.name}
+                // gender={character.gender}
+                // species={character.species}
+                // status={character.status}
+                // location={character.location}
+                // origin={character.origin}
+                // character={character}
+              />
+            ))}
           />
-        ))}
+        </Routes>
       </Main>
       <Navigation></Navigation>
     </>
