@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import GlobalStyle from "../../globalStyles";
 
-function Card({ img, name /* gender, species, status, location, origin */ }) {
+function Card({
+  id,
+  img,
+  name /* gender, species, status, location, origin */,
+}) {
   return (
     <CharacterCard>
       <BookmarkButton>
@@ -18,7 +22,9 @@ function Card({ img, name /* gender, species, status, location, origin */ }) {
       <img src={img} alt="Portrait of {name}" />
       <section>
         <CardName>{name}</CardName>
-        <CardButton>SHOW MORE</CardButton>
+        <Link to={`/details/${id}`}>
+          <CardButton>SHOW MORE</CardButton>
+        </Link>
       </section>
     </CharacterCard>
   );
@@ -42,6 +48,21 @@ const CharacterCard = styled.article`
 const CardName = styled.h2`
   margin: 1em;
 `;
+
+// const StyledLink = styled(Link)`
+//   border-style: none;
+//   margin: 0.25em 1em 2em 1em;
+//   padding: 1em;
+//   font-weight: 600;
+//   background-color: var(--primary);
+//   color: white;
+//   text-decoration: none;
+//   // transition: ease-in-out 0.2s;
+//   &:hover {
+//     background-color: var(--secondary);
+//     cursor: pointer;
+//   }
+// `;
 
 const CardButton = styled.button`
   border-style: none;

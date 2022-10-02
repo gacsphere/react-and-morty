@@ -6,12 +6,14 @@ import styled from "styled-components";
 import Navigation from "./components/navigation/Navigation";
 import { useState, useEffect } from "react";
 import GlobalStyle from "./globalStyles";
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Details from "./pages/Details";
 
 const URL = "https://rickandmortyapi.com/api/character";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  // let { detailedCharacterId } = useParams();
 
   async function fetchCharacters() {
     try {
@@ -33,10 +35,18 @@ function App() {
     <>
       <GlobalStyle />
       <Header>React and Morty</Header>
+
       <Main>
+        <Routes>
+          <Route
+            path="/details/:detailedCharacterId"
+            element={<Details characters={characters} />}
+          />
+        </Routes>
         {characters.map((character) => (
           <Card
             key={character.id}
+            id={character.id}
             img={character.image}
             name={character.name}
             // gender={character.gender}
