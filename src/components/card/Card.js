@@ -1,11 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Card({
-  id,
-  img,
-  name /* gender, species, status, location, origin */,
-}) {
+function Card({ id, img, name, gender, species, status, location, origin }) {
   return (
     <CharacterCard>
       <BookmarkButton>

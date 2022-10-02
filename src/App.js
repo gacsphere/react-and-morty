@@ -57,12 +57,12 @@ function App() {
                 id={character.id}
                 img={character.image}
                 name={character.name}
-                // gender={character.gender}
-                // species={character.species}
-                // status={character.status}
-                // location={character.location}
-                // origin={character.origin}
-                // character={character}
+                gender={character.gender}
+                species={character.species}
+                status={character.status}
+                location={character.location}
+                origin={character.origin}
+                character={character}
               />
             ))}
           />

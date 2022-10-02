@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Card from "../components/card/Card";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Details2({ characters }) {
+  const [showDetails, setShowDetails] = useState(true);
+
   let { detailedCharacterId } = useParams();
   detailedCharacterId = parseInt(detailedCharacterId);
 
@@ -10,74 +14,109 @@ function Details2({ characters }) {
     (character) => character.id === detailedCharacterId
   );
 
+  console.log(filteredCharacter);
   const character = { ...filteredCharacter[0] };
 
   return (
     <div>
-      <Card
-        key={character.id}
-        id={character.id}
-        img={character.image}
-        name={character.name}
-        // gender={character.gender}
-        // species={character.species}
-        // status={character.status}
-        // location={character.location}
-        // origin={character.origin}
-        // character={character}
-      />
-      {/* .map(({ id, name, ...character }) => (
-          <Card key={id} id={id} name={name} character={{ ...character }} />
-        ))} */}
+      <CharacterCard>
+        <BookmarkButton>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40"
+            viewBox="-3 -3 30 30"
+            width="40"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </BookmarkButton>
+        <img src={character.image} alt="Portrait of {name}" />
+        <section>
+          <CardName>{character.name}</CardName>
+          <Table>
+            <tbody>
+              <tr>
+                <TableCell>Gender:</TableCell>
+                <TableCell>{character.gender}</TableCell>
+              </tr>
+              <tr>
+                <TableCell>Species:</TableCell>
+                <TableCell>{character.species}</TableCell>
+              </tr>
+              <tr>
+                <TableCell>Status:</TableCell>
+                <TableCell>{character.status}</TableCell>
+              </tr>
+            </tbody>
+          </Table>
+          {showDetails && (
+            <Table>
+              <tbody>
+                <tr>
+                  <TableCell>Location:</TableCell>
+                  <TableCell>{character.location.name}</TableCell>
+                </tr>
+                <tr>
+                  <TableCell>Origin:</TableCell>
+                  <TableCell>{character.origin.name}</TableCell>
+                </tr>
+              </tbody>
+            </Table>
+          )}
+          <CardButton
+            onClick={() =>
+              setShowDetails((previousShowDetails) => !previousShowDetails)
+            }
+          >
+            {showDetails ? "SHOW LESS" : "SHOW MORE"}
+          </CardButton>
+        </section>
+      </CharacterCard>
     </div>
-
-    // <CharacterCard>
-    //   <BookmarkButton>
-    //     <svg
-    //       xmlns="http://www.w3.org/2000/svg"
-    //       height="40"
-    //       viewBox="-3 -3 30 30"
-    //       width="40"
-    //     >
-    //       <path d="M0 0h24v24H0z" fill="none" />
-    //       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-    //     </svg>
-    //   </BookmarkButton>
-    //   <img src={characters.img} alt="Portrait of {name}" />
-    //   <section>
-    //     <CardName>{characters.name}</CardName>
-    //     <CardButton>SHOW MORE</CardButton>
-    //   </section>
-    // </CharacterCard>
   );
 }
 
-// const CharacterCard = styled.article`
-//   position: relative;
-//   width: 300px;
-//   margin: 1em;
-//   text-align: center;
-//   font-size: 1em;
-//   box-shadow: var(--tertiary) 4px 4px;
-//   background-color: white;
-//   /* background-color: #f7f7f7; */
-//   // border: 4px solid black;
-//   &:hover {
-//     transform: scale(1.0125, 1.0125);
-//   }
-// `;
+const Table = styled.table`
+  margin: 0 1.5em 1.5em 1.5em;
+  text-align: left;
+  width: 1td;
+  /* background-color: var(--tertiary); */
+`;
 
-// const CardName = styled.h2`
-//   margin: 1em;
-// `;
+const TableCell = styled.td`
+  font-weight: 200;
+  padding: 0.25em;
+  width: 1tr;
+`;
 
-// const CardButton = styled.button`
+const CharacterCard = styled.article`
+  position: relative;
+  width: 300px;
+  margin: 1em;
+  text-align: center;
+  font-size: 1em;
+  box-shadow: var(--tertiary) 4px 4px;
+  background-color: white;
+  /* background-color: #f7f7f7; */
+  // border: 4px solid black;
+  &:hover {
+    transform: scale(1.0125, 1.0125);
+  }
+`;
+
+const CardName = styled.h2`
+  margin: 1em;
+`;
+
+// const StyledLink = styled(Link)`
 //   border-style: none;
 //   margin: 0.25em 1em 2em 1em;
 //   padding: 1em;
 //   font-weight: 600;
 //   background-color: var(--primary);
 //   color: white;
+//   text-decoration: none;
 //   // transition: ease-in-out 0.2s;
 //   &:hover {
 //     background-color: var(--secondary);
@@ -85,22 +124,36 @@ function Details2({ characters }) {
 //   }
 // `;
 
-// const BookmarkButton = styled.button`
-//   position: absolute;
-//   right: 1em;
-//   top: -1em;
-//   /* box-shadow: var(--tertiary) 4px 4px; */
-//   background-color: white;
-//   border-style: none;
-//   fill: #dddddd;
-//   &:hover {
-//     fill: #cccccc;
-//     cursor: pointer;
-//   }
-//   &:active {
-//     fill: var(--tertiary);
-//     cursor: pointer;
-//   }
-// `;
+const CardButton = styled.button`
+  border-style: none;
+  margin: 0.25em 1em 2em 1em;
+  padding: 1em;
+  font-weight: 600;
+  background-color: var(--primary);
+  color: white;
+  // transition: ease-in-out 0.2s;
+  &:hover {
+    background-color: var(--secondary);
+    cursor: pointer;
+  }
+`;
+
+const BookmarkButton = styled.button`
+  position: absolute;
+  right: 1em;
+  top: -1em;
+  /* box-shadow: var(--tertiary) 4px 4px; */
+  background-color: white;
+  border-style: none;
+  fill: #dddddd;
+  &:hover {
+    fill: #cccccc;
+    cursor: pointer;
+  }
+  &:active {
+    fill: var(--tertiary);
+    cursor: pointer;
+  }
+`;
 
 export default Details2;
