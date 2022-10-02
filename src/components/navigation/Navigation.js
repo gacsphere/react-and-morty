@@ -1,10 +1,12 @@
 import styled from "styled-components";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navigation() {
   return (
     <NavStyled>
-      <NavButton>HOME</NavButton>
+      <NavButton to="/" end>
+        HOME
+      </NavButton>
       <NavButton>RANDOM</NavButton>
       <NavButton>FAVORITES</NavButton>
       <NavButton>GET CREATIVE</NavButton>
@@ -21,7 +23,9 @@ const NavStyled = styled.nav`
   display: flex;
 `;
 
-const NavButton = styled.button`
+const NavButton = styled(NavLink)`
+  text-decoration: none;
+  text-align: center;
   background: transparent;
   border: none;
   color: white;
