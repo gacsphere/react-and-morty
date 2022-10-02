@@ -6,20 +6,22 @@ import styled from "styled-components";
 import Navigation from "./components/navigation/Navigation";
 import { useState, useEffect } from "react";
 import GlobalStyle from "./globalStyles";
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Details from "./pages/Details";
+import Details2 from "./pages/Details2";
 
 const URL = "https://rickandmortyapi.com/api/character";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  let { detailedCharacterId } = useParams();
+  // let { detailedCharacterId } = useParams();
 
   async function fetchCharacters() {
     try {
       const response = await fetch(URL);
       const result = await response.json();
       console.log(result.results);
+
       setCharacters(result.results);
     } catch (error) {
       console.log(error);
@@ -41,6 +43,10 @@ function App() {
           <Route
             path="/details/:detailedCharacterId"
             element={<Details characters={characters} />}
+          />
+          <Route
+            path="/details2/:detailedCharacterId"
+            element={<Details2 characters={characters} />}
           />
           <Route
             path="/"
@@ -68,8 +74,6 @@ function App() {
 }
 
 const Main = styled.main`
-  // background-color: #fff4e1;
-  // background-color: #cef3ff;
   padding: 6em 0;
   display: flex;
   flex-wrap: wrap;

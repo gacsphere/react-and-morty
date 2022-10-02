@@ -25,6 +25,9 @@ function Card({
         <Link to={`/details/${id}`}>
           <CardButton>SHOW MORE</CardButton>
         </Link>
+        <Link to={`/details2/${id}`}>
+          <CardButton>SHOW MORE D2</CardButton>
+        </Link>
       </section>
     </CharacterCard>
   );

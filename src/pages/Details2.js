@@ -2,28 +2,30 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Card from "../components/card/Card";
 
-function Details({ characters }) {
+function Details2({ characters }) {
   let { detailedCharacterId } = useParams();
+  detailedCharacterId = parseInt(detailedCharacterId);
+
+  const filteredCharacter = characters.filter(
+    (character) => character.id === detailedCharacterId
+  );
+
+  const character = { ...filteredCharacter[0] };
 
   return (
     <div>
-      <h2>Yo ID Nr. {detailedCharacterId}</h2>
-      {characters
-        .filter((character) => character.id === detailedCharacterId)
-        .map((character) => (
-          <Card
-            key={character.id}
-            id={character.id}
-            img={character.image}
-            name={character.name}
-            // gender={character.gender}
-            // species={character.species}
-            // status={character.status}
-            // location={character.location}
-            // origin={character.origin}
-            // character={character}
-          />
-        ))}
+      <Card
+        key={character.id}
+        id={character.id}
+        img={character.image}
+        name={character.name}
+        // gender={character.gender}
+        // species={character.species}
+        // status={character.status}
+        // location={character.location}
+        // origin={character.origin}
+        // character={character}
+      />
       {/* .map(({ id, name, ...character }) => (
           <Card key={id} id={id} name={name} character={{ ...character }} />
         ))} */}
@@ -101,4 +103,4 @@ function Details({ characters }) {
 //   }
 // `;
 
-export default Details;
+export default Details2;
