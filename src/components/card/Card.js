@@ -1,11 +1,24 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Card({ id, img, name, gender, species, status, location, origin }) {
+function Card({
+  id,
+  img,
+  name,
+  gender,
+  species,
+  status,
+  location,
+  origin,
+  character,
+  toggleFavorites,
+}) {
   return (
-    <CharacterCard>
-      <BookmarkButton>
+    <CharacterCard key={id}>
+      <BookmarkButton
+        onClick={() => toggleFavorites(character.id)}
+        style={{ fill: character.favorite ? "var(--primary)" : "#dddddd" }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="40"
@@ -23,7 +36,7 @@ function Card({ id, img, name, gender, species, status, location, origin }) {
           <CardButton>SHOW MORE</CardButton>
         </Link>
         <Link to={`/details2/${id}`}>
-          <CardButton>SHOW MORE D2</CardButton>
+          <CardButton>MORE DETAILS</CardButton>
         </Link>
       </section>
     </CharacterCard>
@@ -38,8 +51,6 @@ const CharacterCard = styled.article`
   font-size: 1em;
   box-shadow: var(--tertiary) 4px 4px;
   background-color: white;
-  /* background-color: #f7f7f7; */
-  // border: 4px solid black;
   &:hover {
     transform: scale(1.0125, 1.0125);
   }

@@ -7,9 +7,9 @@ function Navigation() {
       <NavButton to="/" end>
         HOME
       </NavButton>
-      <NavButton>RANDOM</NavButton>
-      <NavButton>FAVORITES</NavButton>
-      <NavButton>GET CREATIVE</NavButton>
+      <NavButton to="/random-character">RANDOM</NavButton>
+      <NavButton to="/favorites">FAVORITES</NavButton>
+      <NavButton to="/creative">GET CREATIVE</NavButton>
     </NavStyled>
   );
 }
@@ -37,7 +37,7 @@ const NavButton = styled(NavLink)`
     cursor: pointer;
     background-color: #00a7df;
   }
-  &:active {
+  &.active {
     background-color: #00a7df;
   }
 `;
